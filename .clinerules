@@ -1,0 +1,33 @@
+# Overall Development Principles
+
+## Infrastructure
+- **Containerization**:
+  - Docker for containerization
+  - Docker Compose for local development
+  - Multi-stage Dockerfile for optimized builds
+
+## UI/UX Principles
+- Card-based modular design
+- Visual hierarchy of information
+- Mobile-first responsive design
+- Micro-interactions & animations
+- Dark/light mode with system preference
+- Skeleton loading states
+- Progressive disclosure
+- Consistent visual language
+- Data visualization best practices
+
+## Component Design Principles
+- Atomic Design Methodology
+- Composition over inheritance
+- Consistent styling patterns
+- Responsive by default
+- Accessibility first
+- Reusable components
+
+## Development Principles
+- Domain-Driven Design (DDD)
+- SOLID Principles
+- KISS (Keep It Simple, Stupid)
+- YAGNI (You Aren't Gonna Need It)
+- DRY (Don't Repeat Yourself)
