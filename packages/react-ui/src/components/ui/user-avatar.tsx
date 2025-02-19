@@ -43,10 +43,10 @@ export function UserAvatar() {
       <DropdownMenuContent align="end" className="w-[220px]">
         <DropdownMenuLabel>
           <div className="flex">
-            <div className="flex-grow flex-shrink truncate">{user.email}</div>
+            <div className="flex-grow flex-shrink truncate">{user.firstName} {user.lastName}</div>
           </div>
         </DropdownMenuLabel>
-        <Link to="/settings/appearance">
+        {/* <Link to="/settings/appearance">
           <DropdownMenuItem className="cursor-pointer">
             <TextWithIcon
               icon={<SunMoon size={18} />}
@@ -54,7 +54,7 @@ export function UserAvatar() {
               className="cursor-pointer"
             />
           </DropdownMenuItem>
-        </Link>
+        </Link> */}
 
         <DropdownMenuItem
           onClick={() => {

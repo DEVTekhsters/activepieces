@@ -1,6 +1,6 @@
 import { QuestionMarkCircledIcon } from '@radix-ui/react-icons';
 import { t } from 'i18next';
-import { ChevronDown, History, Logs } from 'lucide-react';
+import { ChevronDown, History, Home, Logs } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import {
   createSearchParams,
@@ -88,7 +88,7 @@ export const BuilderHeader = () => {
     <div className="bg-background select-none">
       <div className="relative items-center flex h-[55px] w-full p-4 bg-muted/30">
         <div className="flex items-center gap-2">
-          {!embedState.hideLogoInBuilder &&
+          {/* {!embedState.hideLogoInBuilder &&
             !embedState.disableNavigationInBuilder && (
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -106,7 +106,7 @@ export const BuilderHeader = () => {
                   {t('Go to Dashboard')}
                 </TooltipContent>
               </Tooltip>
-            )}
+            )} */}
           <div className="flex gap-2 items-center">
             {!embedState.hideFolders && (
               <>
@@ -175,7 +175,7 @@ export const BuilderHeader = () => {
 
         <div className="grow"></div>
         <div className="flex items-center justify-center gap-4">
-          {showSupport && (
+          {/* {showSupport && (
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -189,7 +189,7 @@ export const BuilderHeader = () => {
               </TooltipTrigger>
               <TooltipContent side="bottom">{t('Support')}</TooltipContent>
             </Tooltip>
-          )}
+          )} */}
           {hasPermissionToReadRuns && (
             <Tooltip>
               <TooltipTrigger asChild>
@@ -206,7 +206,7 @@ export const BuilderHeader = () => {
             </Tooltip>
           )}
 
-          {!isInRunsPage && (
+          {/* {!isInRunsPage && (
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -222,7 +222,7 @@ export const BuilderHeader = () => {
                 {t('Versions History')}
               </TooltipContent>
             </Tooltip>
-          )}
+          )} */}
 
           <BuilderFlowStatusSection></BuilderFlowStatusSection>
           <UserAvatar></UserAvatar>

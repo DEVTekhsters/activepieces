@@ -29,7 +29,8 @@
     --radius: 0.75rem;
 
     --primary-100: 257 75% 85%;
-    --primary: 257 74% 57%;
+    /* --primary: 257 74% 57%; */
+    --primary: 	0.62	0.44	0.17;
     --primary-300: 257 74% 25%;
     --primary-foreground: 210 20% 98%;
 
@@ -78,7 +79,8 @@
     --input: 240 3.7% 35%;
     --ring: 240 4.9% 83.9%;
 
-    --primary-100: 257 74% 25%;
+    /* --primary-100: 257 74% 25%; */
+    --primary: 222.2 47.4% 11.2%;
     --primary: 257 74% 57%;
     --primary-300: 257 75% 85%;
     --primary-foreground: 210 20% 98%;

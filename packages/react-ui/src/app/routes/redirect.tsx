@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import { Loader } from 'lucide-react';
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ const RedirectPage: React.FC = React.memo(() => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-4">
+      <Loader />
       <div className="text-center">
         <h1 className="text-3xl font-bold">{t('The redirection works!')}</h1>
         <p className="text-muted-foreground">

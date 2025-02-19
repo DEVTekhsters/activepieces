@@ -70,7 +70,8 @@ export const authenticationSession = {
   },
   logOut() {
     this.clearSession();
-    window.location.href = '/sign-in';
+    // window.location.href = '/sign-in';
+    window.location.href = localStorage.getItem("gt-web") ? `${localStorage.getItem("gt-web")}?search=mtvrDfKN8Y5cgUiF3vbha` : '/sign-in';
   },
 };
 
