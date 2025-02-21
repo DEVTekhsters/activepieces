@@ -1,4 +1,5 @@
 import tinycolor from 'tinycolor2'
+import { apVersionUtil, environmentVariables, exceptionHandler, fileExists, networkUtils, webhookSecretsUtils, WorkerSystemProp } from '@activepieces/server-shared'
 
 function generateColorVariations(defaultColor: string) {
     const defaultColorObj = tinycolor(defaultColor)
@@ -64,9 +65,9 @@ export function generateTheme({
 }
 
 export const defaultTheme = generateTheme({
-    primaryColor: '#6e41e2',
-    websiteName: 'Activepieces',
-    fullLogoUrl: 'https://cdn.activepieces.com/brand/full-logo.png',
-    favIconUrl: 'https://cdn.activepieces.com/brand/favicon.ico',
-    logoIconUrl: 'https://cdn.activepieces.com/brand/logo.svg',
+    primaryColor: '#000080',
+    websiteName: 'GoTrust',
+    fullLogoUrl: `'${environmentVariables.getEnvironmentOrThrow(WorkerSystemProp.FRONTEND_URL)}/assets/img/custom/GoTrust.png'`,
+    favIconUrl: `'${environmentVariables.getEnvironmentOrThrow(WorkerSystemProp.FRONTEND_URL)}assets/img/custom/favicon.ico'`,
+    logoIconUrl: `'${environmentVariables.getEnvironmentOrThrow(WorkerSystemProp.FRONTEND_URL)}/assets/img/custom/GoTrust.png'`,
 })
