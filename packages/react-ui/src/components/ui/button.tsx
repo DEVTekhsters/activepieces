@@ -13,7 +13,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary stroke-background text-primary-foreground enabled:hover:bg-primary/90',
+          'bg-[#192440] stroke-background text-primary-foreground enabled:hover:bg-[#192440]/90',
         basic: 'text-primary underline-offset-4 enabled:hover:bg-accent',
         destructive:
           'bg-destructive text-background enabled:hover:bg-destructive/90',

@@ -20,10 +20,16 @@ module.exports = {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',
+        '2xl': '1680px',
       },
     },
     extend: {
+      fontSize: {
+        sm: '0.875rem', // 14px
+        base: '1rem',   // 16px
+        lg: '1.125rem', // 18px
+        xl: '1.25rem',  // 20px
+      },
       width: {
         '4.5': '1.125rem'
       },
