@@ -142,6 +142,9 @@
       "@activepieces/piece-clockodo": [
         "packages/pieces/community/clockodo/src/index.ts"
       ],
+      "@activepieces/piece-cloutly": [
+        "packages/pieces/community/cloutly/src/index.ts"
+      ],
       "@activepieces/piece-confluence": [
         "packages/pieces/community/confluence/src/index.ts"
       ],
@@ -208,6 +211,9 @@
       ],
       "@activepieces/piece-figma": [
         "packages/pieces/community/figma/src/index.ts"
+      ],
+      "@activepieces/piece-firecrawl":[
+        "packages/pieces/community/firecrawl/src/index.ts"
       ],
       "@activepieces/piece-file-helper": [
         "packages/pieces/community/file-helper/src/index.ts"
