@@ -169,7 +169,7 @@ ENV AP_PIECES_SOURCE=FILE
 ENV AP_PIECES_SYNC_MODE=NONE
 
 # Redis configuration
-ENV AP_REDIS_URL=redis://redis:6379
+# ENV AP_REDIS_URL=redis://redis:6379
 
 # Copy node_modules and ensure all dependencies are available
 COPY --from=build /usr/src/app/node_modules /usr/src/app/node_modules
