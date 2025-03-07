@@ -111,9 +111,9 @@ pipeline {
                     sh """
                     ssh -i "${SSH_KEY}" -o StrictHostKeyChecking=no "${SSH_USER}@${SSH_HOST}" '
                     LATEST_TAG=\$(cat /home/ubuntu/dev_ecr/activepieces/LATEST_TAG || echo "latest") && \
-                    docker tag "${ECR_URI}/activepieces:\${LATEST_TAG}" "${ECR_URI}/activepieces:dev_latest" && \
-                    docker push "${ECR_URI}/activepieces:\${LATEST_TAG}" && \
-                    docker push "${ECR_URI}/activepieces:dev_latest"
+                    docker tag "${ECR_URI}/active-pieces:\${LATEST_TAG}" "${ECR_URI}/activepieces:dev_latest" && \
+                    docker push "${ECR_URI}/active-pieces:\${LATEST_TAG}" && \
+                    docker push "${ECR_URI}/active-pieces:dev_latest"
                     '
                     """
                 }
