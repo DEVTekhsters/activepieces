@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-      environment {
+       environment {
         SSH_USER = "ubuntu"
         BRANCH_NAME = "env.BRANCH_NAME"
         SSH_HOST = "148.113.6.50"
