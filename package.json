@@ -437,10 +437,6 @@
   },
   "overrides": {
     "cross-spawn": "7.0.6",
-    "axios": "1.8.2",
-    "path-to-regexp": "0.1.12",
-    "koa": "2.15.4",
-    "xml-crypto": "3.2.1",
     "@tryfabric/martian": {
       "@notionhq/client": "$@notionhq/client"
     },
