@@ -1,18 +1,16 @@
 import { t } from 'i18next';
 
 import { flagsHooks } from '@/hooks/flags-hooks';
-import GTLogo from '../../assets/img/custom/GoTrust.png'
+
+// import GTLogo from '../../assets/img/custom/GoTrust.png';
+import GTLogo from '../../assets/img/custom/gotrustTitle_light.svg';
 
 const FullLogo = () => {
   const branding = flagsHooks.useWebsiteBranding();
 
   return (
     <div className="h-[60px]">
-      <img
-        className="h-full"
-        src={GTLogo}
-        alt={t('logo')}
-      />
+      <img className="h-full" src={GTLogo} alt={t('logo')} />
     </div>
   );
 };
