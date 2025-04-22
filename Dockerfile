@@ -23,7 +23,7 @@ ENV LC_ALL en_US.UTF-8
 ENV NX_DAEMON=false
 ENV NX_CACHE_DIRECTORY=/tmp/nx-cache
 
-RUN apt-get update && apt-get upgrade \
+RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends \
     locales \
     locales-all \
