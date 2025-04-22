@@ -1,4 +1,4 @@
-FROM node:18.20.5-bullseye-slim AS base
+FROM node:22-bullseye-slim AS base
 
 # Use a cache mount for apt to speed up the process
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
@@ -23,16 +23,12 @@ ENV LC_ALL en_US.UTF-8
 ENV NX_DAEMON=false
 ENV NX_CACHE_DIRECTORY=/tmp/nx-cache
 
-RUN apt-get update && apt-get upgrade -y \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     locales \
     locales-all \
     libcap-dev \
     && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && \
-    apt-get upgrade -y linux-libc-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 # install isolated-vm in a parent directory to avoid linking the package in every sandbox
 RUN cd /usr/src && npm i isolated-vm@5.0.1
@@ -51,7 +47,7 @@ COPY . .
 
 # Install all dependencies first
 COPY .npmrc package.json package-lock.json ./
-RUN npm ci
+RUN npm install -f
 
 # Install nx globally for building pieces
 RUN npm install -g nx@20.4.2
