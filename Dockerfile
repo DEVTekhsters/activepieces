@@ -47,7 +47,7 @@ COPY . .
 
 # Install all dependencies first
 COPY .npmrc package.json package-lock.json ./
-RUN npm ci
+RUN npm install -f
 
 # Install nx globally for building pieces
 RUN npm install -g nx@20.4.2
