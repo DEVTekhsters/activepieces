@@ -23,12 +23,16 @@ ENV LC_ALL en_US.UTF-8
 ENV NX_DAEMON=false
 ENV NX_CACHE_DIRECTORY=/tmp/nx-cache
 
-RUN apt-get update \
+RUN apt-get update && apt-get upgrade \
     && apt-get install -y --no-install-recommends \
     locales \
     locales-all \
     libcap-dev \
     && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get upgrade -y linux-libc-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # install isolated-vm in a parent directory to avoid linking the package in every sandbox
 RUN cd /usr/src && npm i isolated-vm@5.0.1
