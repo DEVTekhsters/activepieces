@@ -4,7 +4,12 @@ FROM node:22-bullseye-slim AS base
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
+    curl \
+    bash \
+    linux-libc-dev \
+    libbpf0 \
     openssh-client \
     python3 \
     g++ \
@@ -13,8 +18,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     poppler-utils \
     poppler-data && \
     yarn config set python /usr/bin/python3 && \
-    npm install -g node-gyp
-RUN npm i -g npm@9.9.3 pnpm@9.15.0
+    npm install -g node-gyp && \
+    rm -rf /var/lib/apt/lists/*
+RUN npm i -g npm@10.9.2 pnpm@9.15.0
 
 # Set the locale
 ENV LANG en_US.UTF-8
