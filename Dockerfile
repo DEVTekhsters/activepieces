@@ -12,6 +12,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     poppler-utils poppler-data locales locales-all \
     libcap-dev nginx gettext && \
     apt-get install --only-upgrade -y linux-libc-dev && \
+    apt-get install -y --no-install-recommends \
+    zlib1g zlib1g-dev libtiff6 && \
     yarn config set python /usr/bin/python3 && \
     npm install -g node-gyp && \
     apt-get clean && \
