@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     rm -rf /var/lib/apt/lists/*
 
 # Global npm installs
-RUN npm i -g npm@11 pnpm@9.15.0
+RUN npm i -g npm@10.9.2  pnpm@9.15.0
 
 # Environment variables
 ENV LANG=en_US.UTF-8 \
