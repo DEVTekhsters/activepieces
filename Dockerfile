@@ -7,7 +7,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
-    curl bash linux-libc-dev libbpf0 openssh-client \
+    curl bash linux-libc-dev libbpf-dev openssh-client \
     python3 g++ build-essential git \
     poppler-utils poppler-data locales locales-all \
     libcap-dev nginx gettext && \
