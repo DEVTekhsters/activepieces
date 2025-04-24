@@ -1,4 +1,4 @@
-FROM node:22-bullseye-slim AS base
+FROM node:22-alpine AS base
 
 # Use a cache mount for apt to speed up the process
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
