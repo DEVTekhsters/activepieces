@@ -71,7 +71,7 @@ RUN npx nx run-many --target=build --projects=pieces --skip-nx-cache && \
     npm install tslib @activepieces/pieces-framework @activepieces/pieces-common
 
 # Individual community piece builds
-RUN for piece in microsoft-teams smtp open-router webhook http whatsapp whatsable slack; do \
+RUN for piece in microsoft-teams smtp open-router webhook http whatsapp whatsable slack schedule; do \
     echo "Building piece: $piece" && \
     npx nx build pieces-$piece --skip-nx-cache && \
     rm -rf /tmp/nx-cache/* || true; \
@@ -132,7 +132,7 @@ RUN npm install tslib @activepieces/pieces-framework @activepieces/pieces-common
 WORKDIR /usr/src/app
 
 # Env vars for piece loading
-ENV AP_DEV_PIECES="microsoft-teams,smtp,open-router,webhook,http,whatsapp,whatsable,slack" \
+ENV AP_DEV_PIECES="microsoft-teams,smtp,open-router,webhook,http,whatsapp,whatsable,slack,schedule" \
     AP_PIECES_SOURCE=FILE \
     AP_PIECES_SYNC_MODE=NONE
 
