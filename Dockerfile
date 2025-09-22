@@ -84,7 +84,7 @@ RUN npx nx run-many --target=build --projects=pieces --skip-nx-cache && \
     npm install tslib @activepieces/pieces-framework @activepieces/pieces-common
  
 # Individual community piece builds
-RUN for piece in microsoft-teams smtp open-router webhook http whatsapp whatsable slack; do \
+RUN for piece in microsoft-teams smtp open-router webhook http whatsapp whatsable slack shopify; do \
     echo "Building piece: $piece" && \
     npx nx build pieces-$piece --skip-nx-cache && \
     rm -rf /tmp/nx-cache/* || true; \
