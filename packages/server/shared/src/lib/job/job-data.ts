@@ -1,23 +1,34 @@
 import {
     ExecutionType,
     FlowVersion,
-    GetFlowVersionForWorkerRequestType,
     PiecePackage,
     ProgressUpdateType,
     RunEnvironment,
     TriggerHookType,
-    TriggerType,
 } from '@activepieces/shared'
 import { Static, Type } from '@sinclair/typebox'
-
+ 
+// Define TriggerType locally to avoid circular dependency issues
+export enum TriggerType {
+    EMPTY = 'EMPTY',
+    PIECE = 'PIECE_TRIGGER',
+}
+ 
+// Define GetFlowVersionForWorkerRequestType locally to avoid circular dependency issues
+export enum GetFlowVersionForWorkerRequestType {
+    LATEST = 'LATEST',
+    LOCKED = 'LOCKED',
+    EXACT = 'EXACT',
+}
+ 
 export const LATEST_JOB_DATA_SCHEMA_VERSION = 4
-
+ 
 export enum RepeatableJobType {
     RENEW_WEBHOOK = 'RENEW_WEBHOOK',
     EXECUTE_TRIGGER = 'EXECUTE_TRIGGER',
     DELAYED_FLOW = 'DELAYED_FLOW',
 }
-
+ 
 // Never change without increasing LATEST_JOB_DATA_SCHEMA_VERSION, and adding a migration
 export const RenewWebhookJobData = Type.Object({
     schemaVersion: Type.Number(),
@@ -27,7 +38,7 @@ export const RenewWebhookJobData = Type.Object({
     jobType: Type.Literal(RepeatableJobType.RENEW_WEBHOOK),
 })
 export type RenewWebhookJobData = Static<typeof RenewWebhookJobData>
-
+ 
 // Never change without increasing LATEST_JOB_DATA_SCHEMA_VERSION, and adding a migration
 export const RepeatingJobData = Type.Object({
     projectId: Type.String(),
@@ -39,7 +50,7 @@ export const RepeatingJobData = Type.Object({
     jobType: Type.Literal(RepeatableJobType.EXECUTE_TRIGGER),
 })
 export type RepeatingJobData = Static<typeof RepeatingJobData>
-
+ 
 // Never change without increasing LATEST_JOB_DATA_SCHEMA_VERSION, and adding a migration
 export const DelayedJobData = Type.Object({
     projectId: Type.String(),
@@ -53,14 +64,14 @@ export const DelayedJobData = Type.Object({
     jobType: Type.Literal(RepeatableJobType.DELAYED_FLOW),
 })
 export type DelayedJobData = Static<typeof DelayedJobData>
-
+ 
 export const ScheduledJobData = Type.Union([
     RepeatingJobData,
     DelayedJobData,
     RenewWebhookJobData,
 ])
 export type ScheduledJobData = Static<typeof ScheduledJobData>
-
+ 
 export const OneTimeJobData = Type.Object({
     projectId: Type.String(),
     environment: Type.Enum(RunEnvironment),
@@ -74,7 +85,7 @@ export const OneTimeJobData = Type.Object({
     progressUpdateType: Type.Enum(ProgressUpdateType),
 })
 export type OneTimeJobData = Static<typeof OneTimeJobData>
-
+ 
 export const WebhookJobData = Type.Object({
     projectId: Type.String(),
     schemaVersion: Type.Number(),
@@ -89,8 +100,8 @@ export const WebhookJobData = Type.Object({
     ])),
 })
 export type WebhookJobData = Static<typeof WebhookJobData>
-
-
+ 
+ 
 export enum UserInteractionJobType {
     EXECUTE_VALIDATION = 'EXECUTE_VALIDATION',
     EXECUTE_ACTION = 'EXECUTE_ACTION',
@@ -98,7 +109,7 @@ export enum UserInteractionJobType {
     EXECUTE_PROPERTY = 'EXECUTE_PROPERTY',
     EXECUTE_EXTRACT_PIECE_INFORMATION = 'EXECUTE_EXTRACT_PIECE_INFORMATION',
 }
-
+ 
 export const ExecuteValidateAuthJobData = Type.Object({
     requestId: Type.String(),
     webserverId: Type.String(),
@@ -109,7 +120,7 @@ export const ExecuteValidateAuthJobData = Type.Object({
     connectionValue: Type.Unknown(),
 })
 export type ExecuteValidateAuthJobData = Static<typeof ExecuteValidateAuthJobData>
-
+ 
 export const ExecuteActionJobData = Type.Object({
     requestId: Type.String(),
     jobType: Type.Literal(UserInteractionJobType.EXECUTE_ACTION),
@@ -120,7 +131,7 @@ export const ExecuteActionJobData = Type.Object({
     sampleData: Type.Record(Type.String(), Type.Unknown()),
 })
 export type ExecuteActionJobData = Static<typeof ExecuteActionJobData>
-
+ 
 export const ExecuteTriggerHookJobData = Type.Object({
     requestId: Type.String(),
     jobType: Type.Literal(UserInteractionJobType.EXECUTE_TRIGGER_HOOK),
@@ -131,7 +142,7 @@ export const ExecuteTriggerHookJobData = Type.Object({
     hookType: Type.Enum(TriggerHookType),
 })
 export type ExecuteTriggerHookJobData = Static<typeof ExecuteTriggerHookJobData>
-
+ 
 export const ExecutePropertyJobData = Type.Object({
     requestId: Type.String(),
     jobType: Type.Literal(UserInteractionJobType.EXECUTE_PROPERTY),
@@ -146,7 +157,7 @@ export const ExecutePropertyJobData = Type.Object({
     searchValue: Type.Optional(Type.String()),
 })
 export type ExecutePropertyJobData = Static<typeof ExecutePropertyJobData>
-
+ 
 export const ExecuteExtractPieceMetadataJobData = Type.Object({
     requestId: Type.String(),
     webserverId: Type.String(),
@@ -156,7 +167,7 @@ export const ExecuteExtractPieceMetadataJobData = Type.Object({
     piece: PiecePackage,
 })
 export type ExecuteExtractPieceMetadataJobData = Static<typeof ExecuteExtractPieceMetadataJobData>
-
+ 
 export const UserInteractionJobData = Type.Union([
     ExecuteValidateAuthJobData,
     ExecuteActionJobData,
@@ -165,7 +176,7 @@ export const UserInteractionJobData = Type.Union([
     ExecuteExtractPieceMetadataJobData,
 ])
 export type UserInteractionJobData = Static<typeof UserInteractionJobData>
-
+ 
 export const UserInteractionJobDataWithoutWatchingInformation = Type.Union([
     Type.Omit(ExecuteValidateAuthJobData, ['webserverId', 'requestId']),
     Type.Omit(ExecuteActionJobData, ['webserverId', 'requestId']),
@@ -174,7 +185,7 @@ export const UserInteractionJobDataWithoutWatchingInformation = Type.Union([
     Type.Omit(ExecuteExtractPieceMetadataJobData, ['webserverId', 'requestId']),
 ])
 export type UserInteractionJobDataWithoutWatchingInformation = Static<typeof UserInteractionJobDataWithoutWatchingInformation>
-
+ 
 export const JobData = Type.Union([
     ScheduledJobData,
     OneTimeJobData,
